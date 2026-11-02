@@ -1,6 +1,6 @@
-# folk.
+# CodeSpace
 
-A showcase-ready Angular 22 freelance marketplace prototype for clients and independent professionals. The first release includes role-specific dashboards and profiles, job discovery and posting, proposal review, project tracking, and mock messaging.
+A showcase-ready Angular 22 freelance marketplace prototype for clients and independent professionals, inspired by platforms such as Upwork. The first release includes role-specific dashboards and profiles, job discovery and posting, proposal review, project tracking, and mock messaging.
 
 ## Run locally
 
