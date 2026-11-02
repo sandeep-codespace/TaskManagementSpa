@@ -1,0 +1,24 @@
+<section class="page-heading">
+  <div><p class="eyebrow">KEEP THINGS MOVING</p><h1>{{ role() === 'client' ? 'Proposals' : 'Your proposals' }}</h1><p class="heading-subtitle">{{ role() === 'client' ? 'Review talent interested in your jobs.' : 'Track the proposals you have sent to clients.' }}</p></div>
+  <span class="heading-badge">{{ proposals().length }} total</span>
+</section>
+<section class="panel proposal-panel">
+  @for (card of proposals(); track card.proposal.id) {
+    <article class="proposal-row">
+      <span class="avatar proposal-avatar">{{ card.initials }}</span>
+      <div class="proposal-main">
+        <div class="proposal-title"><strong>{{ card.title }}</strong><span class="proposal-status" [class]="card.proposal.status.toLowerCase()">{{ card.proposal.status }}</span></div>
+        <span>{{ card.subtitle }} <span class="bullet">·</span> {{ card.proposal.sentAt }}</span>
+        <p>{{ card.message }}</p>
+      </div>
+      <div class="proposal-amount"><strong>{{ card.proposal.amount | currency:'USD':'symbol':'1.0-0' }}</strong><span>Fixed price</span></div>
+      @if (role() === 'client' && card.proposal.status === 'Pending') {
+        <button class="button button-primary proposal-action" (click)="accept.emit(card.proposal.id)">Accept proposal</button>
+      } @else if (card.proposal.status === 'Accepted') {
+        <span class="accepted-label">✓ Hired</span>
+      }
+    </article>
+  } @empty {
+    <div class="empty-state listing-empty"><span class="empty-icon">↗</span><strong>No proposals yet</strong><span>{{ role() === 'client' ? 'Proposals from freelancers will show up here.' : 'Send a proposal on a job to start a conversation.' }}</span><button class="text-button" (click)="browseJobs.emit()">{{ role() === 'client' ? 'View your jobs' : 'Browse open jobs' }} →</button></div>
+  }
+</section>

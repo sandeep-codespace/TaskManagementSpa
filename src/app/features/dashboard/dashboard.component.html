@@ -1,0 +1,63 @@
+<section class="page-heading">
+  <div>
+    <p class="eyebrow">{{ todayLabel() }}</p>
+    <h1>{{ greeting() }}, {{ firstName() }} <span class="wave">✦</span></h1>
+    <p class="heading-subtitle">{{ role() === 'client' ? 'Here is what is happening with your projects.' : 'Here is your freelance work at a glance.' }}</p>
+  </div>
+  <button class="button button-primary" (click)="navigateJobs.emit()">
+    <span class="button-plus">+</span>{{ role() === 'client' ? 'Post a job' : 'Explore projects' }}
+  </button>
+</section>
+
+<section class="metric-grid" aria-label="Workspace summary">
+  @for (metric of metrics(); track metric.label) {
+    <article class="metric-card">
+      <div class="metric-topline"><span>{{ metric.label }}</span><span class="metric-icon" [class]="metric.tone">{{ metric.icon }}</span></div>
+      <div class="metric-value">{{ metric.value }}</div>
+      <div class="metric-foot"><span class="metric-change" [class.neutral]="metric.neutral">{{ metric.change }}</span><span>{{ metric.note }}</span></div>
+    </article>
+  }
+</section>
+
+<div class="dashboard-grid">
+  <section class="panel projects-panel">
+    <div class="panel-heading">
+      <div><h2>{{ role() === 'client' ? 'Your projects' : 'Current projects' }}</h2><p>{{ role() === 'client' ? 'Keep track of your posted work' : 'Work you have underway' }}</p></div>
+      <button class="text-button" (click)="navigateJobs.emit()">View all <span>→</span></button>
+    </div>
+    <div class="project-list">
+      @for (job of projects(); track job.id) {
+        <article class="project-row">
+          <span class="project-icon" [class]="job.color">{{ job.icon }}</span>
+          <div class="project-main"><strong>{{ job.title }}</strong><span>{{ job.category }} <span class="bullet">·</span> {{ role() === 'client' ? job.freelancerName || 'Waiting for proposals' : job.clientName }}</span></div>
+          <div class="project-status" [class]="job.status.toLowerCase().replaceAll(' ', '-')"><span></span>{{ job.status }}</div>
+          <strong class="project-budget">{{ job.budget | currency:'USD':'symbol':'1.0-0' }}</strong>
+        </article>
+      } @empty {
+        <div class="empty-state"><span class="empty-icon">▤</span><strong>No projects yet</strong><span>Your projects will show up here.</span></div>
+      }
+    </div>
+    <button class="panel-footer-link" (click)="navigateJobs.emit()">See all projects <span>→</span></button>
+  </section>
+
+  <section class="panel activity-panel">
+    <div class="panel-heading"><div><h2>{{ role() === 'client' ? 'Hiring activity' : 'Proposal activity' }}</h2><p>Your latest updates</p></div><button class="more-button" aria-label="More activity">···</button></div>
+    <div class="activity-list">
+      @for (item of activities(); track item.id) {
+        <article class="activity-item">
+          <span class="activity-avatar" [class]="item.color">{{ item.initials }}</span>
+          <div class="activity-copy"><strong>{{ item.title }}</strong><span>{{ item.description }}</span><small>{{ item.time }}</small></div>
+        </article>
+      } @empty {
+        <div class="empty-state compact"><span class="empty-icon">✳</span><strong>All caught up</strong><span>New updates will appear here.</span></div>
+      }
+    </div>
+    <button class="panel-footer-link" (click)="navigateProposals.emit()">Go to proposals <span>→</span></button>
+  </section>
+</div>
+
+<section class="bottom-banner">
+  <div class="banner-art"><span class="banner-spark">✳</span><span class="banner-circle"></span><span class="banner-line"></span></div>
+  <div class="banner-copy"><span class="banner-kicker">A BETTER WAY TO WORK</span><strong>{{ role() === 'client' ? 'Good work starts with a great brief.' : 'Your next great project is out there.' }}</strong><span>{{ role() === 'client' ? 'Post your next project and meet the right independent talent.' : 'Find work that fits your skills, schedule, and ambitions.' }}</span></div>
+  <button class="button button-light" (click)="navigateJobs.emit()">{{ role() === 'client' ? 'Post a project' : 'Find a project' }} <span>→</span></button>
+</section>

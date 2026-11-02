@@ -1,0 +1,52 @@
+<div class="app-shell">
+  <aside class="sidebar">
+    <a class="brand" href="#" (click)="$event.preventDefault(); setView('dashboard')">
+      <span class="brand-mark">f</span>
+      <span>folk<span class="brand-period">.</span></span>
+    </a>
+    <div class="workspace-label">WORKSPACE</div>
+    <nav class="main-nav" aria-label="Main navigation">
+      <button class="nav-link" [class.active]="view() === 'dashboard'" (click)="setView('dashboard')"><span class="nav-icon">⌂</span><span>Overview</span></button>
+      <button class="nav-link" [class.active]="view() === 'jobs'" (click)="setView('jobs')"><span class="nav-icon">▤</span><span>{{ activeRole() === 'client' ? 'My jobs' : 'Find work' }}</span><span class="nav-count">{{ jobs().length }}</span></button>
+      <button class="nav-link" [class.active]="view() === 'proposals'" (click)="setView('proposals')"><span class="nav-icon">↗</span><span>{{ activeRole() === 'client' ? 'Proposals' : 'My proposals' }}</span>@if (pendingProposalCount() > 0) { <span class="nav-count">{{ pendingProposalCount() }}</span> }</button>
+      <button class="nav-link" [class.active]="view() === 'messages'" (click)="setView('messages')"><span class="nav-icon">▱</span><span>Messages</span><span class="nav-dot"></span></button>
+    </nav>
+    <div class="workspace-label profile-label">ACCOUNT</div>
+    <button class="nav-link" [class.active]="view() === 'profile'" (click)="setView('profile')"><span class="nav-icon">◉</span><span>My profile</span></button>
+    <div class="sidebar-spacer"></div>
+    <div class="help-card"><span class="help-icon">?</span><div><strong>Need a hand?</strong><span>Visit our help center</span></div><span class="help-arrow">↗</span></div>
+    <button class="account-card" (click)="setView('profile')"><span class="avatar avatar-sidebar">{{ currentUser()?.initials }}</span><span class="account-info"><strong>{{ currentUser()?.name }}</strong><small>{{ currentUser()?.headline }}</small></span><span class="account-menu">···</span></button>
+  </aside>
+
+  <main class="main-area">
+    <header class="topbar">
+      <div class="breadcrumb"><span>Workspace</span><span class="breadcrumb-chevron">/</span><strong>{{ pageTitle() }}</strong></div>
+      <div class="topbar-actions"><label class="role-switch-label" for="role-switch">Demo view</label><select id="role-switch" class="role-switch" [value]="activeRole()" (change)="changeRole($event)"><option value="freelancer">Freelancer</option><option value="client">Client</option></select><button class="icon-button notification-button" aria-label="Notifications"><span>♧</span><i></i></button><button class="avatar avatar-top" aria-label="Open profile" (click)="setView('profile')">{{ currentUser()?.initials }}</button></div>
+    </header>
+
+    <div class="page-content">
+      @if (error()) { <div class="error-banner" role="alert"><span>{{ error() }}</span><button (click)="loadData()">Try again</button></div> }
+      @if (isLoading()) {
+        <div class="loading-state"><span class="loading-spinner"></span>Loading your workspace...</div>
+      } @else if (data(); as workspaceData) {
+        @switch (view()) {
+          @case ('dashboard') {
+            <app-dashboard-feature [role]="activeRole()" [greeting]="greeting()" [firstName]="firstName()" [todayLabel]="todayLabel" [metrics]="metrics()" [projects]="dashboardProjects()" [activities]="activityItems()" (navigateJobs)="setView('jobs')" (navigateProposals)="setView('proposals')"></app-dashboard-feature>
+          }
+          @case ('jobs') {
+            <app-jobs-feature [role]="activeRole()" [jobs]="visibleJobs()" [searchQuery]="searchQuery()" [jobFilter]="jobFilter()" [filters]="jobFilters" [proposalJobIds]="proposalJobIds()" (searchChanged)="searchQuery.set($event)" (filterChanged)="jobFilter.set($event)" (submitProposal)="submitProposal($event)" (viewProposals)="setView('proposals')" (createJob)="createJob($event)"></app-jobs-feature>
+          }
+          @case ('proposals') {
+            <app-proposals-feature [role]="activeRole()" [data]="workspaceData" [userId]="currentUser()?.id ?? ''" (accept)="acceptProposal($event)" (browseJobs)="setView('jobs')"></app-proposals-feature>
+          }
+          @case ('messages') {
+            <app-messages-feature [role]="activeRole()" [data]="workspaceData" (send)="sendMessage($event.conversationId, $event.text)"></app-messages-feature>
+          }
+          @case ('profile') {
+            @if (currentUser(); as user) { <app-profile-feature [user]="user" [notice]="profileNotice()" (noticeChanged)="profileNotice.set($event)"></app-profile-feature> }
+          }
+        }
+      }
+    </div>
+  </main>
+</div>

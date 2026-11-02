@@ -1,0 +1,244 @@
+{
+  "users": [
+    {
+      "id": "freelancer-01",
+      "role": "freelancer",
+      "name": "Sofia Davis",
+      "initials": "SD",
+      "headline": "Product designer & digital creator",
+      "location": "San Francisco, CA",
+      "rating": 4.9,
+      "completedProjects": 18,
+      "hourlyRate": 85,
+      "available": true,
+      "about": "I help ambitious teams turn complex ideas into simple, thoughtful digital experiences. From early product strategy to polished interfaces, I bring a curious mind and a collaborative approach to every project.",
+      "skills": ["Product design", "Figma", "Design systems", "Prototyping", "User research"]
+    },
+    {
+      "id": "client-01",
+      "role": "client",
+      "name": "Olivia Rhye",
+      "initials": "OR",
+      "headline": "Founder at Studio North",
+      "location": "San Francisco, CA",
+      "rating": 4.9,
+      "completedProjects": 12,
+      "hourlyRate": 0,
+      "available": true,
+      "about": "Building useful digital products with a small, thoughtful team. I value clear communication, good ideas, and great work.",
+      "skills": ["Product strategy", "Startups", "Digital products"]
+    },
+    {
+      "id": "freelancer-02",
+      "role": "freelancer",
+      "name": "Lana Steiner",
+      "initials": "LS",
+      "headline": "Brand designer",
+      "location": "Austin, TX",
+      "rating": 5.0,
+      "completedProjects": 24,
+      "hourlyRate": 95,
+      "available": true,
+      "about": "Independent brand designer helping new ideas find their voice and visual identity.",
+      "skills": ["Brand identity", "Art direction", "Illustration"]
+    },
+    {
+      "id": "freelancer-03",
+      "role": "freelancer",
+      "name": "Phoenix Baker",
+      "initials": "PB",
+      "headline": "Full-stack developer",
+      "location": "Brooklyn, NY",
+      "rating": 4.8,
+      "completedProjects": 31,
+      "hourlyRate": 110,
+      "available": true,
+      "about": "I build dependable web experiences for teams that want to move quickly without compromising quality.",
+      "skills": ["Angular", "TypeScript", "Node.js", "Accessibility"]
+    }
+  ],
+  "jobs": [
+    {
+      "id": "job-101",
+      "ownerId": "client-01",
+      "freelancerId": "freelancer-01",
+      "title": "Website redesign for a creative studio",
+      "category": "Design & creative",
+      "description": "Refresh our studio website with a clean visual system, thoughtful storytelling, and a responsive set of key pages.",
+      "budget": 2400,
+      "duration": "2-4 weeks",
+      "status": "In progress",
+      "postedAt": "2 days ago",
+      "proposalCount": 8,
+      "clientName": "Olivia Rhye",
+      "freelancerName": "Sofia Davis",
+      "icon": "✳",
+      "color": "project-purple",
+      "skills": ["Web design", "Figma", "Webflow"]
+    },
+    {
+      "id": "job-102",
+      "ownerId": "client-01",
+      "title": "Brand identity for a wellness startup",
+      "category": "Branding",
+      "description": "Create a warm and memorable visual identity for a new wellness brand, including logo, colors, and launch assets.",
+      "budget": 1800,
+      "duration": "2-3 weeks",
+      "status": "Open",
+      "postedAt": "1 day ago",
+      "proposalCount": 6,
+      "clientName": "Olivia Rhye",
+      "icon": "✺",
+      "color": "project-peach",
+      "skills": ["Brand identity", "Logo design", "Illustration"]
+    },
+    {
+      "id": "job-103",
+      "ownerId": "client-01",
+      "freelancerId": "freelancer-01",
+      "title": "Mobile app onboarding experience",
+      "category": "Product design",
+      "description": "Design a welcoming onboarding flow that helps new customers reach value in their first few minutes.",
+      "budget": 3200,
+      "duration": "3-5 weeks",
+      "status": "In progress",
+      "postedAt": "5 days ago",
+      "proposalCount": 11,
+      "clientName": "Olivia Rhye",
+      "freelancerName": "Sofia Davis",
+      "icon": "◈",
+      "color": "project-blue",
+      "skills": ["Product design", "Mobile app", "Prototyping"]
+    },
+    {
+      "id": "job-104",
+      "ownerId": "client-01",
+      "title": "Illustrations for a new product launch",
+      "category": "Design & creative",
+      "description": "We are looking for a thoughtful illustrator to create a small set of friendly, expressive launch illustrations.",
+      "budget": 950,
+      "duration": "1-2 weeks",
+      "status": "Open",
+      "postedAt": "3 days ago",
+      "proposalCount": 4,
+      "clientName": "Olivia Rhye",
+      "icon": "✦",
+      "color": "project-green",
+      "skills": ["Illustration", "Digital art", "Branding"]
+    },
+    {
+      "id": "job-105",
+      "ownerId": "client-01",
+      "freelancerId": "freelancer-01",
+      "title": "Design system and component library",
+      "category": "Product design",
+      "description": "Build a scalable design system that brings consistency to our product and makes collaboration easier.",
+      "budget": 4100,
+      "duration": "4-6 weeks",
+      "status": "Completed",
+      "postedAt": "3 weeks ago",
+      "proposalCount": 13,
+      "clientName": "Olivia Rhye",
+      "freelancerName": "Sofia Davis",
+      "icon": "◫",
+      "color": "project-yellow",
+      "skills": ["Design systems", "Figma", "Documentation"]
+    },
+    {
+      "id": "job-106",
+      "ownerId": "client-01",
+      "title": "Angular developer for a customer portal",
+      "category": "Development",
+      "description": "Help us improve the next version of our customer portal with accessible, responsive Angular components.",
+      "budget": 5600,
+      "duration": "4-8 weeks",
+      "status": "Open",
+      "postedAt": "4 hours ago",
+      "proposalCount": 2,
+      "clientName": "Olivia Rhye",
+      "icon": "</>",
+      "color": "project-blue",
+      "skills": ["Angular", "TypeScript", "Accessibility"]
+    }
+  ],
+  "proposals": [
+    {
+      "id": "proposal-201",
+      "jobId": "job-102",
+      "freelancerId": "freelancer-02",
+      "message": "I would love to shape a distinctive identity for your wellness brand. I recently helped a small team launch a similarly thoughtful product.",
+      "amount": 1750,
+      "status": "Pending",
+      "sentAt": "2 hours ago"
+    },
+    {
+      "id": "proposal-202",
+      "jobId": "job-104",
+      "freelancerId": "freelancer-03",
+      "message": "Your launch sounds exciting. I work closely with illustrators and can bring a clear, collaborative process to the project.",
+      "amount": 950,
+      "status": "Pending",
+      "sentAt": "Yesterday"
+    },
+    {
+      "id": "proposal-203",
+      "jobId": "job-106",
+      "freelancerId": "freelancer-01",
+      "message": "I would love to help with this Angular project. My product design background helps me build interfaces that feel polished and easy to use.",
+      "amount": 5200,
+      "status": "Pending",
+      "sentAt": "Just now"
+    },
+    {
+      "id": "proposal-204",
+      "jobId": "job-103",
+      "freelancerId": "freelancer-01",
+      "message": "I focus on simple, welcoming mobile experiences and would be happy to help your new customers get started.",
+      "amount": 3000,
+      "status": "Accepted",
+      "sentAt": "5 days ago"
+    }
+  ],
+  "conversations": [
+    {
+      "id": "chat-01",
+      "clientId": "client-01",
+      "freelancerId": "freelancer-01",
+      "name": "Olivia Rhye",
+      "initials": "OR",
+      "projectTitle": "Website redesign for a creative studio",
+      "time": "10:42 AM",
+      "messages": [
+        { "id": "message-01", "text": "Hi Sofia, I have shared the first round of homepage concepts in the project space.", "time": "10:18 AM", "fromMe": false },
+        { "id": "message-02", "text": "The direction is looking great. I especially like how the new type feels with the photography.", "time": "10:34 AM", "fromMe": true },
+        { "id": "message-03", "text": "Thank you! I will refine the mobile layout and share an update this afternoon.", "time": "10:42 AM", "fromMe": false }
+      ]
+    },
+    {
+      "id": "chat-02",
+      "clientId": "client-01",
+      "freelancerId": "freelancer-02",
+      "name": "Lana Steiner",
+      "initials": "LS",
+      "projectTitle": "Brand identity for a wellness startup",
+      "time": "Yesterday",
+      "messages": [
+        { "id": "message-04", "text": "I have attached a few examples of recent brand work to my proposal.", "time": "Yesterday", "fromMe": false },
+        { "id": "message-05", "text": "Thanks, Lana. Your work feels like a lovely fit for what we have in mind.", "time": "Yesterday", "fromMe": true }
+      ]
+    },
+    {
+      "id": "chat-03",
+      "clientId": "client-01",
+      "freelancerId": "freelancer-03",
+      "name": "Phoenix Baker",
+      "initials": "PB",
+      "projectTitle": "Illustrations for a new product launch",
+      "time": "Monday",
+      "messages": [
+        { "id": "message-06", "text": "I have a couple of early concepts ready. Would you prefer a brighter or more muted palette?", "time": "Monday", "fromMe": false },
+        { "id": "message-07", "text": "A brighter palette would be great. Thanks for checking!", "time": "Monday", "fromMe": true }
+      ]
+    }
+  ]
+}
